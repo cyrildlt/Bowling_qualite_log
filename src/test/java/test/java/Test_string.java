@@ -76,7 +76,7 @@ public class Test_string {
 		prems.ajout(a, b);
 		prems.ajout(a, b);
 		prems.ajout(a,b);
-		if (prems.ajout(a,b)==false)
+		if (prems.ajout(a,b)!=false)
 			fail("Tableau trop grand");		
 	}
 	
