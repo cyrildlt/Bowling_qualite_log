@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="test.java.Test_string" time="0.014" tests="9" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="test.java.Test_string" time="0.002" tests="9" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_121\jre\bin"/>
@@ -26,7 +26,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
-    <property name="classworlds.conf" value="C:\Users\delic\workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf8833437872049305122.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\delic\workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf1425896390766976248.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_121/bin/server;C:/Program Files/Java/jre1.8.0_121/bin;C:/Program Files/Java/jre1.8.0_121/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\EasyPHP-DevServer-14.1VC9\binaries\php\php_runningversion;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\PragmaDev\bin;C:\PragmaDev\share\3rdparty\MinGW\bin;C:\MinGW;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;;C:\PragmaDev\bin;C:\PragmaDev\share\3rdparty\MinGW\bin;C:\Users\delic\Desktop;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -62,15 +62,11 @@
   </properties>
   <testcase name="strike_de_fin_joueur1" classname="test.java.Test_string" time="0.001"/>
   <testcase name="test_inf_zero_deu_val" classname="test.java.Test_string" time="0"/>
-  <testcase name="sommelancer_joueur1" classname="test.java.Test_string" time="0.001"/>
+  <testcase name="sommelancer_joueur1" classname="test.java.Test_string" time="0"/>
   <testcase name="sommetotal_joueur1" classname="test.java.Test_string" time="0"/>
-  <testcase name="test_sup_10" classname="test.java.Test_string" time="0.005">
-    <failure message="Tableau trop grand" type="java.lang.AssertionError">java.lang.AssertionError: Tableau trop grand
-	at test.java.Test_string.test_sup_10(Test_string.java:80)
-</failure>
-  </testcase>
+  <testcase name="test_sup_10" classname="test.java.Test_string" time="0"/>
   <testcase name="test_function" classname="test.java.Test_string" time="0"/>
-  <testcase name="test_inf_zero_prem_val" classname="test.java.Test_string" time="0.001"/>
+  <testcase name="test_inf_zero_prem_val" classname="test.java.Test_string" time="0"/>
   <testcase name="spare_de_fin_joueur1" classname="test.java.Test_string" time="0"/>
   <testcase name="tuple_egal_10" classname="test.java.Test_string" time="0"/>
 </testsuite>

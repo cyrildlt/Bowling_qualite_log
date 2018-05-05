@@ -179,7 +179,15 @@ public class Test_string {
 		a=10;b=0;
 		prems.ajout(a, b);
 		b=1;a=0;
-		assertTrue("On aurait du pouvoir ajouter aprs le strike",prems.ajout(a, b));
+		assertTrue("On aurait du pouvoir ajouter apres le strike",prems.ajout(a, b));
+	}
+	
+	@Test
+	public void cas_3_erreurs_de_suite(){
+		Jeu j1=new Jeu();
+		Jeu j2=new Jeu();
+		Partie nouv=new Partie(j1,j2);
+		assertFalse("La partie aurait du se terminer",nouv.lancer());
 	}
 	
 	

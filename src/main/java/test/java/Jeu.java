@@ -9,7 +9,8 @@ public class Jeu {
 	ArrayList<Integer> result;
 	boolean spare,strike;
 	int nb_coup;
-	
+	boolean fini;
+	String name;
 	
 
 	public Jeu(){
@@ -19,8 +20,18 @@ public class Jeu {
 		spare=false;
 		strike=false;
 		nb_coup=10;
+		fini=false;
+		name="";
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public boolean isSpare() {
 		return spare;
 	}
@@ -112,13 +123,24 @@ public class Jeu {
 	}
 
 	public boolean ajout(int j1,int j2){
-	   if ((j1+j2)>10 || j1<0 || j2<0 || lancer1.size()>(nb_coup-1)  || lancer2.size()>(nb_coup-1) )  
+	   if ((j1+j2)>10 || j1<0 || j2<0 || lancer1.size()>(nb_coup-1)  || lancer2.size()>(nb_coup-1) ){ 
+		   if (lancer1.size()>(nb_coup-1)  || lancer2.size()>(nb_coup-1))
+			   fini=true;
 		   return false;
+	   }
 	   if (nb_coup==11 && spare==true && j2!=0)  
 		   return false;
 	   lancer1.add(j1);
 	   lancer2.add(j2);
 	   somme(lancer1.size()-1);
 	   return true;
+	}
+
+	public boolean isFini() {
+		return fini;
+	}
+
+	public void setFini(boolean fini) {
+		this.fini = fini;
 	}
 }
