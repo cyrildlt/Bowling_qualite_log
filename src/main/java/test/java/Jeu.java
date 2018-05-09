@@ -127,7 +127,7 @@ public class Jeu {
 		   return false;
 	   }
 	   if (nb_coup==11 && spare==true && j2!=0) {
-		   System.out.println("La deuxieme valeur doit etre egale a zero");
+		   System.out.println("Spare: La deuxieme valeur doit etre egale a zero");
 		   return false;
 	   }
 	   lancer1.add(j1);
