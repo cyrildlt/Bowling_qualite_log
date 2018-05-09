@@ -29,18 +29,7 @@ public class Test_string {
 			fail("Premire valeur inferieure a 0");		
 	}
 	
-//	@Test
-//	public void test_inf_zero_prem_val(){
-//		Jeu prems=new Jeu();
-//		int a=-1;
-//		int b=2;
-//		try {
-//			prems.ajout(a,b);
-//			fail("pas d'exeption");
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//		}	
-//	}
+
 	
 	@Test
 	public void test_inf_zero_deu_val(){
@@ -186,8 +175,10 @@ public class Test_string {
 	public void cas_3_erreurs_de_suite(){
 		Jeu j1=new Jeu();
 		Jeu j2=new Jeu();
+		j1.setFini(true);
+		j2.setFini(true);
 		Partie nouv=new Partie(j1,j2);
-		assertFalse("La partie aurait du se terminer",nouv.lancer());
+		assertTrue("Fin de partie immediate",nouv.lancer());
 	}
 	
 	

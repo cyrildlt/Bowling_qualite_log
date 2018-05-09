@@ -6,6 +6,7 @@ public class Bowling_jeu {
 	
 	public static void main(String[] args) {
 		boolean result;
+		System.out.print("Jeu de Bowling : deux joueurs");
 		Jeu joueur1=new Jeu();
 		Jeu joueur2=new Jeu();
 		Partie bowl=new Partie(joueur1,joueur2);
