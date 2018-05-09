@@ -3,6 +3,8 @@ package test.java;
 
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayInputStream;
+
 import org.junit.Test;
 
 public class Test_string {
@@ -172,14 +174,46 @@ public class Test_string {
 	}
 	
 	@Test
-	public void cas_3_erreurs_de_suite(){
+	public void cas_variable_fini_a_vrai(){
 		Jeu j1=new Jeu();
 		Jeu j2=new Jeu();
+		j1.setName("a");
+		j2.setName("b");
 		j1.setFini(true);
 		j2.setFini(true);
 		Partie nouv=new Partie(j1,j2);
 		assertTrue("Fin de partie immediate",nouv.lancer());
 	}
 	
+	@Test
+	public void cas_nom_deja_entre(){
+		Jeu j1=new Jeu();
+		Jeu j2=new Jeu();
+		j1.setName("a");
+		Partie nouv=new Partie(j1,j2);
+		assertEquals("a",nouv.nom_joueur(j1,1));
+	}
 	
+	@Test
+	public void cas_nom_pas_entre(){
+		Jeu j1=new Jeu();
+		Jeu j2=new Jeu();
+		Partie nouv=new Partie(j1,j2);
+		ByteArrayInputStream in = new ByteArrayInputStream("Pierre".getBytes());
+		System.setIn(in);
+		assertEquals("Pierre",nouv.nom_joueur(j1,1));
+	}
+	
+	@Test
+	public void cas_3_erreurs_consecutives(){
+		Jeu j1=new Jeu();
+		Jeu j2=new Jeu();
+		j1.setName("a");
+		j2.setName("b");
+		Partie nouv=new Partie(j1,j2);
+		String input="9 9 9 9 9 9";
+		ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+		System.setIn(in);
+		assertFalse("Trois erreurs consecutives: abandon de la partie",nouv.lancer());
+	}
 }
