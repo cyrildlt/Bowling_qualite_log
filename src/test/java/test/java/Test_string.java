@@ -3,6 +3,8 @@ package test.java;
 
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayInputStream;
+
 import org.junit.Test;
 
 public class Test_string {
@@ -29,18 +31,7 @@ public class Test_string {
 			fail("Premire valeur inferieure a 0");		
 	}
 	
-//	@Test
-//	public void test_inf_zero_prem_val(){
-//		Jeu prems=new Jeu();
-//		int a=-1;
-//		int b=2;
-//		try {
-//			prems.ajout(a,b);
-//			fail("pas d'exeption");
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//		}	
-//	}
+
 	
 	@Test
 	public void test_inf_zero_deu_val(){
@@ -158,7 +149,7 @@ public class Test_string {
 		a=2;b=8;
 		prems.ajout(a, b);
 		b=0;
-		assertTrue("On aurait du pouvoir ajouter aprs le spare",prems.ajout(a, b));
+		assertTrue("On aurait du pouvoir ajouter apres le spare",prems.ajout(a, b));
 	}
 	
 	
@@ -183,12 +174,97 @@ public class Test_string {
 	}
 	
 	@Test
-	public void cas_3_erreurs_de_suite(){
+	public void cas_variable_fini_a_vrai(){
+		Jeu j1=new Jeu();
+		Jeu j2=new Jeu();
+		j1.setName("a");
+		j2.setName("b");
+		j1.setFini(true);
+		j2.setFini(true);
+		Partie nouv=new Partie(j1,j2);
+		assertTrue("Fin de partie normalement immediate",nouv.lancer());
+	}
+	
+	@Test
+	public void cas_nom_deja_entre(){
+		Jeu j1=new Jeu();
+		Jeu j2=new Jeu();
+		j1.setName("a");
+		Partie nouv=new Partie(j1,j2);
+		assertEquals("a",nouv.nom_joueur(j1,1));
+	}
+	
+	@Test
+	public void cas_nom_pas_entre(){
 		Jeu j1=new Jeu();
 		Jeu j2=new Jeu();
 		Partie nouv=new Partie(j1,j2);
-		assertFalse("La partie aurait du se terminer",nouv.lancer());
+		ByteArrayInputStream in = new ByteArrayInputStream("Pierre".getBytes());
+		System.setIn(in);
+		assertEquals("Pierre",nouv.nom_joueur(j1,1));
 	}
 	
+	@Test
+	public void cas_nom_invalide(){
+		Jeu j1=new Jeu();
+		Jeu j2=new Jeu();
+		Partie nouv=new Partie(j1,j2);
+		String input="P1e\n34\nPierre\n";
+		ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+		System.setIn(in);
+		assertEquals("Pierre",nouv.nom_joueur(j1,1));
+	}
 	
+	@Test
+	public void cas_3_erreurs_consecutives(){
+		Jeu j1=new Jeu();
+		Jeu j2=new Jeu();
+		j1.setName("a");
+		j2.setName("b");
+		Partie nouv=new Partie(j1,j2);
+		String input="9 9 9 9 9 9";
+		ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+		System.setIn(in);
+		assertFalse("Trois erreurs consecutives: la partie aurait du se terminer",nouv.lancer());
+	}
+	
+	@Test
+	public void partie_reussie(){
+		Jeu j1=new Jeu();
+		Jeu j2=new Jeu();
+		j1.setName("a");
+		j2.setName("b");
+		Partie nouv=new Partie(j1,j2);
+		String input="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ";
+		ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+		System.setIn(in);
+		assertTrue("Partie non terminee",nouv.lancer());
+	}
+	
+	@Test
+	public void score_equivalent(){
+		Jeu j1=new Jeu();
+		Jeu j2=new Jeu();
+		j1.setName("a");
+		j2.setName("b");
+		Partie nouv=new Partie(j1,j2);
+		String input="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ";
+		ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+		System.setIn(in);
+		nouv.lancer();
+		assertEquals(j1.sommetotal(j1.lancer1, j1.lancer2),j2.sommetotal(j2.lancer1, j2.lancer2));
+	}
+	@Test
+	public void joueur1_gagne(){
+		Jeu j1=new Jeu();
+		Jeu j2=new Jeu();
+		j1.setName("a");
+		j2.setName("b");
+		Partie nouv=new Partie(j1,j2);
+		String input="2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ";
+		ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+		System.setIn(in);
+		nouv.lancer();
+		assertTrue("Le joueur 1 n a pas gagne",j2.sommetotal(j2.lancer1, j2.lancer2)<j1.sommetotal(j1.lancer1, j1.lancer2));
+	}
 }
